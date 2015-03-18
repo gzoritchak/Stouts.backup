@@ -2,7 +2,8 @@
 # Uninstall the role
 
 - name: Uninstall the role - pt. 1
-  file: state=absent path=/etc/cron.d/backup
+  file: state=absent path=/etc/cron.d/backup_{{item.name}}
+  with_items: backup_profiles
 
 - name: Uninstall the role - pt. 2
   file: state=absent path={{item}}
